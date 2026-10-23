@@ -20,7 +20,7 @@ footer {
 /* Todos links */
 a {
     text-decoration: none;
-    color: palevioletred;
+    color: rgb(141, 31, 68);
 }
 
 /* Todos os links com ponteiro sobre */
@@ -47,17 +47,18 @@ body {
     /* Sticky footer */
     min-height: 100%;
 }
+
 /* Fundo da página */
-body{
+body {
     background-image: url('../img/fundo2.jpg');
     background-color: blanchedalmond;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    color:white;
+    color: white;
 }
-}
+
 
 h1,
 h2,
@@ -87,8 +88,10 @@ p {
 #wrap>header {
 
     padding: 1rem;
-    background-color: palevioletred;
+    background-color: pink;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Apenas imagem dentro do header. */
@@ -106,14 +109,14 @@ p {
 }
 
 /* Formulário de pesquisa no header. */
-#wrap>header form {
+/* #wrap>header form {
     margin-top: 1rem;
     display: flex;
 
-}
+} */
 
 /* O campo de pesquisa cresce o máximo possível. */
-#wrap>header form input {
+/* #wrap>header form input {
     flex-grow: 1;
     border-radius: .6rem 0 0 .6rem;
 
@@ -122,18 +125,18 @@ p {
 #wrap>header form button {
     border-radius: 0 .6rem .6rem 0;
 
-}
+} */
 
 /* 
         Seleciona todos os filhos do form e
         herda as configurações da fonte dos elementos raiz (HTML, BODY). */
-#wrap>header form>* {
+/* #wrap>header form>* {
     font-size: inherit;
     font-family: inherit;
     border: none;
     padding: .5rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
-}
+} */
 
 
 
@@ -143,6 +146,7 @@ p {
     color: #fff;
     -webkit-text-stroke: .7px black;
     padding-left: .85rem;
+    align-items: center;
 
 }
 
@@ -159,21 +163,42 @@ img.responsive {
 
 /***** Menu principal *****/
 #wrap>nav {
-    background-color: pink;
+    background-color: rgb(250, 173, 186);
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    /*justify-content: flex-end; coloca todos os icones grudado , no canto direito*/
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
 
+#wrap>nav div {
+    display: flex;
+    justify-content: space-around;
+}
+
+#wrap>nav>form {
+    display: flex;
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+#wrap>nav>form input {
+    flex-grow: 1;
+}
 
 
-#wrap>nav>a {
+/* Somente o primeiro filho <a> do <nav>
+#wrap>nav a:first-child {
+    margin-right: auto;
+}*/
+
+
+#wrap>nav a {
     padding: .8rem .5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .10rem;
+    gap: .3rem;
     color: white;
     transition: .2s;
 }
@@ -189,7 +214,7 @@ img.responsive {
 }
 
 #wrap>footer a:hover {
-    padding: .1.5rem;
+    padding: 15rem;
     background-color: blanchedalmond;
     color: black;
 }
@@ -218,7 +243,7 @@ img.responsive {
 }
 
 #wrap>main {
-     /* Sticky footer */
+    /* Sticky footer */
     flex: 1;
     min-height: 100%;
     display: flex;
@@ -227,22 +252,98 @@ img.responsive {
 
 #wrap>main section,
 #wrap>main article {
-    padding: 0 1.5rem;
-     background-color: rgba(255, 255, 255, 0.5);
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.5);
 
-     /* Sticky footer */
+    /* Sticky footer */
     flex: 1;
-    
+
 }
+
 #wrap>main aside {
     padding: 0 1.5rem;
     background-color: rgba(255, 255, 255, 0.5);
-     /* Sticky footer */
+    /* Sticky footer */
     flex: 1;
-    
+
 }
+
 /*muda a cor perto do rodapé 
 #wrap>main aside {
     background-color: rgb(222, 222, 222);
     padding: 0 1rem;
 }*/
+
+#wrap>main {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    color: rgb(99, 8, 38);
+}
+
+/***********************
+/***** RESPONSIVIDADE *****/
+
+/**** HEADER *****/
+
+@media screen and (min-width: 576px) {
+    #wrap>header {
+
+        /* Elementos lado-a-lado */
+        flex-direction: row;
+        /* Na linha central */
+        align-items: center;
+        /* Afastados */
+        justify-content: space-between;
+
+    }
+
+    #wrap>header>div {
+        /* Logo e título crescem o máximo possível */
+        flex-grow: 1;
+    }
+
+}
+
+@media screen and (min-width:800px) {
+
+    #wrap>nav {
+
+        flex-direction: row;
+
+    }
+}
+
+/***** Telas de 640px ou mais *****/
+/***** MENU PRINCIPAL *****/
+
+@media screen and (min-width: 640px) {
+
+    #wrap>nav a {
+        padding: .8rem 1rem;
+        /* Elementos lado-a-lado */
+        flex-direction: row;
+        /* Ajusta o preenchimento */
+        gap: .8rem;
+    }
+
+    #wrap>nav i {
+        /* Diminui ícones */
+        font-size: 1.4rem;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+
+    /***** CONTEÚDO PRINCIPAL *****/
+    #wrap>main {
+        flex-direction: row;
+    }
+
+    #wrap>main aside {
+        flex-basis: 250px;
+        /* Hack caso "flex-basis" falhe!*/
+        min-width: 250px;
+        max-width: 250px;
+    }
+}
