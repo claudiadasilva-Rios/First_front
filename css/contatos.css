@@ -35,3 +35,39 @@ article form button {
     color: white;
     cursor: blo;
 }
+
+article form textarea {
+    resize: vertical;
+}
+
+/* Quando o campo for válido */
+article form input:valid,
+article form textarea:valid {
+    background-color: #E8F0FE;
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+}
+
+/* Libera o botão de envio */
+article form:valid button {
+    background-color: steelblue;
+    cursor: pointer;
+    /* Desbloqueia cliques no elemento */
+    pointer-events: all;
+}
+
+aside ul {
+    list-style: none;
+    line-height: 3;
+    padding-left: 1rem;
+}
+
+aside ul a {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+aside ul i {
+    font-size: 2rem;
+}
